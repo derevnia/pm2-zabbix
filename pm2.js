@@ -44,7 +44,12 @@ pm2.connect(function (err) {
 
     const pm2List = {
       data: list.map((l) => {
-        return { "{#NAME}": l.name, "{#STATUS}": intStatus(l.pm2_env.status) }
+        const lastStartTime = new Date(l.pm2_env.pm_uptime);
+        return { 
+          "{#NAME}": l.name, 
+          "{#STATUS}": intStatus(l.pm2_env.status),
+          "{#LAST_START_TIME}": lastStartTime.getTime()
+        }
       })
     }
 
