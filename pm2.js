@@ -38,6 +38,7 @@ pm2.connect(function (err) {
         return
       } catch {
         console.log(3)
+        process.exit(3)
         return
       }
     }
